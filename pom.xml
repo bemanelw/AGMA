@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ru.agma</groupId>
-	<artifactId>transport</artifactId>
+	<artifactId>agma</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>transport</name>
-	<description>Website for Agma Transport Company</description>
+	<name>agma</name>
+	<description>Website for AGMA Transport Company</description>
 	<url/>
 	<licenses>
 		<license/>
