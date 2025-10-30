@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Импортные перевозки | ТК АГМА</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #181818;
+            --white: #fff;
+            --gray: #f2f2f2;
+            --silver: #c0c0c0;
+            --border: #d0d0d0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 3px 20px rgba(0,0,0,0.06);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            color: var(--black) !important;
+        }
+        .nav-link {
+            color: var(--black);
+            margin-left: 1rem;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: var(--silver);
+        }
+
+        .hero {
+            position: relative;
+            background: url('/images/carousel-import.jpg') center/cover no-repeat;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top:0;left:0;width:100%;height:100%;
+            background: rgba(0,0,0,0.6);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 15px;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .content-section {
+            background: var(--white);
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-title::after {
+            content:'';
+            position:absolute;
+            bottom:-12px;left:0;
+            width:60px;height:3px;
+            background: var(--silver);
+            border-radius:4px;
+        }
+
+        .service-card {
+            background: var(--gray);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 3rem;
+        }
+        .country-item {
+            background: var(--gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        footer {
+            background: var(--black);
+            color: #ddd;
+            text-align: center;
+            padding: 40px 0 25px;
+        }
+        footer a {
+            color: var(--silver);
+            text-decoration: none;
+        }
+
+        @media(max-width:768px){
+            .hero-title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/">ТК АГМА</a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="/">Главная</a>
+            <a class="nav-link" href="/russia">По России</a>
+            <a class="nav-link" href="/export">Экспорт</a>
+            <a class="nav-link" href="/crossdock">Кросс-докинг</a>
+            <a class="nav-link" href="/ktk">КТК по УрФО</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Импортные перевозки</h1>
+        <p class="lead">Организация импортных поставок с полным таможенным оформлением</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">Услуги импортной логистики</h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">📑</div>
+                    <h4>Таможенное оформление</h4>
+                    <p>Полное таможенное сопровождение и оформление документации.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">🌍</div>
+                    <h4>Международная доставка</h4>
+                    <p>Доставка из Европы, Азии, Америки любым видом транспорта.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h4>Консолидация грузов</h4>
+                    <p>Сборные грузы со складов консолидации в странах отправления.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h4>Страхование</h4>
+                    <p>Страхование международных перевозок на всех этапах.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5 mb-4">Основные направления импорта</h3>
+        <div class="countries-grid">
+            <div class="country-item">
+                <h5>🇪🇺 Европа</h5>
+                <p>Германия, Франция, Италия, Польша</p>
+            </div>
+            <div class="country-item">
+                <h5>🌏 Азия</h5>
+                <p>Китай, Корея, Япония, Вьетнам</p>
+            </div>
+            <div class="country-item">
+                <h5>🇺🇸 Америка</h5>
+                <p>США, Канада, Бразилия</p>
+            </div>
+            <div class="country-item">
+                <h5>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Великобритания</h5>
+                <p>Прямые поставки из UK</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>©2025 ТК АГМА — Импортные перевозки</p>
+        <p><a href="mailto:info@agma-transport.ru">info@agma-transport.ru</a> | +7 (XXX) XXX-XX-XX</p>
+    </div>
+</footer>
+</body>
+</html>

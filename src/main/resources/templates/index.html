@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АГМА — Грузоперевозки по России</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/js/favicon.ico">
+
+    <style>
+        :root {
+            --black: #181818;
+            --white: #fff;
+            --gray: #f2f2f2;
+            --silver: #c0c0c0;
+            --border: #d0d0d0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray);
+            color: var(--black);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 3px 20px rgba(0,0,0,0.06);
+            transition: background .3s ease;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            color: var(--black) !important;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand img {
+            height: 42px;
+            margin-right: 12px;
+        }
+        .nav-link {
+            color: var(--black);
+            margin-left: 1rem;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: var(--silver);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: url('/images/bg-top.jpg') center/cover no-repeat fixed;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top:0;left:0;width:100%;height:100%;
+            background: rgba(0,0,0,0.6);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 15px;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--white);
+        }
+        .hero-text {
+            font-size: 1.3rem;
+            color: #ddd;
+            margin: 1.5rem 0 2rem;
+        }
+        .hero-btn {
+            background: var(--white);
+            color: var(--black);
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 14px 38px;
+            border: none;
+            transition: all .3s;
+            box-shadow: 0 5px 25px rgba(192,192,192,0.3);
+        }
+        .hero-btn:hover {
+            background: var(--silver);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+
+        /* Плитки направлений */
+        .services-section {
+            background: var(--white);
+            padding: 90px 0 70px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-title::after {
+            content:'';
+            position:absolute;
+            bottom:-12px;left:50%;
+            width:60px;height:3px;
+            transform:translateX(-50%);
+            background: var(--silver);
+            border-radius:4px;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+            gap: 30px;
+        }
+        .service-tile {
+            background: var(--gray);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all .35s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        .service-tile:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+        .service-tile img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform .45s ease;
+        }
+        .service-tile:hover img {
+            transform: scale(1.12);
+        }
+        .service-info {
+            padding: 1.5rem;
+        }
+        .service-info h5 {
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.6rem;
+        }
+        .service-info p {
+            color: #555;
+            font-size: 0.98rem;
+            margin: 0;
+        }
+        .service-link {
+            display: block;
+            color: inherit;
+            transition: transform 0.25s ease;
+        }
+        .service-link:hover {
+            transform: scale(1.02);
+        }
+        .service-link:hover .service-tile {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        /* Преимущества */
+        .features {
+            background: var(--black);
+            color: var(--white);
+            padding: 90px 0;
+        }
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all .3s;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+        }
+        .feature-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-6px);
+        }
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--silver);
+            margin-bottom: 1rem;
+        }
+        .feature-title {
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+        .feature-text {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: linear-gradient(180deg, var(--white) 0%, var(--gray) 100%);
+            padding: 90px 0 70px;
+        }
+        .contact-card {
+            border: none;
+            background: var(--white);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+            border-radius: 18px;
+            padding: 2.5rem 2rem;
+        }
+        .form-control {
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            background: #fafafa;
+        }
+        .form-control:focus {
+            border-color: var(--silver);
+            box-shadow: 0 0 0 0.2rem rgba(192,192,192,0.25);
+        }
+        .hero-btn.submit {
+            background: var(--black);
+            color: var(--white);
+        }
+        .hero-btn.submit:hover {
+            background: var(--silver);
+            color: var(--black);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, var(--black) 0%, #141414 100%);
+            color: #ddd;
+            text-align: center;
+            padding: 40px 0 25px;
+            font-size: 0.95rem;
+        }
+        footer a {
+            color: var(--silver);
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* Fade In Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width:768px){
+            .hero-title { font-size: 2.2rem; }
+            .hero-text { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="/images/logo.png" alt="АГМА">
+            ТК АГМА
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarMain">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBarMain">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
+                <li class="nav-item"><a class="nav-link" href="#features">Преимущества</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="hero" id="hero">
+    <div class="hero-content fade-in">
+        <h1 class="hero-title">Грузоперевозки по России и СНГ</h1>
+        <p class="hero-text">Надёжность. Технологичность. Партнёрский подход. Современная логистика для вашего бизнеса.</p>
+        <a href="#contact" class="hero-btn">Отправить заявку</a>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="services-section" id="services">
+    <div class="container">
+        <h2 class="section-title fade-in">Наши услуги</h2>
+        <div class="service-grid fade-in">
+
+            <a href="/russia" class="service-link text-decoration-none">
+                <div class="service-tile">
+                    <img src="/images/carousel-russia.jpg" alt="Перевозки по России">
+                    <div class="service-info">
+                        <h5>Перевозки по России</h5>
+                        <p>От малых партий до полных комплектных грузов по всей стране.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/import" class="service-link text-decoration-none">
+                <div class="service-tile">
+                    <img src="/images/carousel-import.jpg" alt="Импорт">
+                    <div class="service-info">
+                        <h5>Импорт</h5>
+                        <p>Организация международных поставок под ключ.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/export" class="service-link text-decoration-none">
+                <div class="service-tile">
+                    <img src="/images/carousel-export.jpg" alt="Экспорт">
+                    <div class="service-info">
+                        <h5>Экспорт</h5>
+                        <p>Доставка в СНГ, Европу, Азию — гарантированные сроки.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/ktk" class="service-link text-decoration-none">
+                <div class="service-tile">
+                    <img src="/images/carousel-ktk.jpg" alt="Контейнерные перевозки">
+                    <div class="service-info">
+                        <h5>Контейнерные перевозки</h5>
+                        <p>Приём и обработка КТК — эффективные маршруты.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/crossdock" class="service-link text-decoration-none">
+                <div class="service-tile">
+                    <img src="/images/carousel-crossdock.jpg" alt="Кросс-докинг">
+                    <div class="service-info">
+                        <h5>Кросс-докинг</h5>
+                        <p>Ускорение цепочек поставок за счёт оптимизации процессов.</p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Features -->
+<section class="features" id="features">
+    <div class="container">
+        <h2 class="section-title text-white mb-5 fade-in">Преимущества работы с нами</h2>
+        <div class="row g-4 fade-in">
+            <div class="col-md-3"><div class="feature-card"><div class="feature-icon">🚚</div><div class="feature-title">Скорость</div><div class="feature-text">Молниеносная обработка заявок и чёткое соблюдение сроков.</div></div></div>
+            <div class="col-md-3"><div class="feature-card"><div class="feature-icon">🔒</div><div class="feature-title">Надёжность</div><div class="feature-text">Ваш груз под защитой — страхование и онлайн‑мониторинг.</div></div></div>
+            <div class="col-md-3"><div class="feature-card"><div class="feature-icon">⚙️</div><div class="feature-title">Инновации</div><div class="feature-text">Эффективная организация маршрутов и цифровые решения.</div></div></div>
+            <div class="col-md-3"><div class="feature-card"><div class="feature-icon">🏆</div><div class="feature-title">Опыт</div><div class="feature-text">10+ лет на рынке транспортной логистики.</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <h2 class="section-title fade-in">Свяжитесь с нами</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-7 fade-in">
+                <div class="contact-card" id="contact-form-block">
+                    <form th:action="@{/contact}" method="post" th:object="${contactRequest}">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Имя *</label>
+                                <input type="text" class="form-control" id="name" th:field="*{name}" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Телефон *</label>
+                                <input type="tel" class="form-control" id="phone" th:field="*{phone}" required placeholder="+7 (XXX) XXX‑XX‑XX">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E‑mail *</label>
+                            <input type="email" class="form-control" id="email" th:field="*{email}" required placeholder="email@example.com">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="routeFrom" class="form-label">Откуда *</label>
+                                <input type="text" class="form-control" id="routeFrom" th:field="*{routeFrom}" required placeholder="Москва">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="routeTo" class="form-label">Куда *</label>
+                                <input type="text" class="form-control" id="routeTo" th:field="*{routeTo}" required placeholder="Санкт-Петербург">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Комментарий</label>
+                            <textarea class="form-control" id="message" rows="3" th:field="*{message}" placeholder="Описание груза, даты или особенности..."></textarea>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="hero-btn submit">Отправить заявку</button>
+                        </div>
+                    </form>
+
+                    <!-- Сообщения -->
+                    <div th:if="${successMessage}" id="successMsg" class="alert alert-success mt-4" th:text="${successMessage}"></div>
+                    <div th:if="${errorMessage}" id="errorMsg" class="alert alert-danger mt-4" th:text="${errorMessage}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<footer>
+    <div>©2025 ТК АГМА — Премиальные грузоперевозки |
+        <a href="mailto:info@agma-transport.ru">info@agma-transport.ru</a>|+7(XXX)XXX‑XX‑XX
+    </div>
+</footer>
+
+<script>
+    const fadeEls=document.querySelectorAll('.fade-in');
+    const observer=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+            if(e.isIntersecting)e.target.classList.add('visible');
+        });
+    });
+    fadeEls.forEach(el=>observer.observe(el));
+</script>
+<script src="/js/script.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
