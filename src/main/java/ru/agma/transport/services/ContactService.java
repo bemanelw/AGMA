@@ -26,8 +26,8 @@ public class ContactService {
 
     public ContactService(
             JavaMailSender mailSender,
-            @Value("${spring.mail.username:serch-zuganov@yandex.ru}") String companyEmail,
-            @Value("${spring.mail.from:serch-zuganov@yandex.ru}") String fromEmail
+            @Value("${spring.mail.username:chernyugovlev@gmail.com}") String companyEmail,
+            @Value("${spring.mail.from:chernyugovlev@gmail.com}") String fromEmail
     ) {
         this.mailSender = mailSender;
         this.companyEmail = companyEmail;
