@@ -55,10 +55,16 @@ public class HomeController {
         return "crossdock";
     }
 
-    @GetMapping("/ktk")
-    public String ktk(Model model) {
+    @GetMapping("/containers")
+    public String containers(Model model) {
         model.addAttribute("pageTitle", "КТК по УрФО | АГМА");
-        return "ktk";
+        return "containers";
+    }
+
+    @GetMapping("/requisites")
+    public String requisites(Model model) {
+        model.addAttribute("pageTitle", "Реквизиты компаний | АГМА");
+        return "requisites";
     }
 
     // Обработка формы обратной связи
