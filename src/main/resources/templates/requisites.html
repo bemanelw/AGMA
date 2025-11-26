@@ -28,6 +28,10 @@
         .navbar {
             background: var(--white);
             box-shadow: 0 3px 20px rgba(0,0,0,0.06);
+            transition: background .3s ease;
+            min-height: 90px;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
         }
         .navbar-brand {
             font-weight: 700;
@@ -36,19 +40,37 @@
             color: var(--black) !important;
             display: flex;
             align-items: center;
+            padding: 0;
+            margin: 0;
         }
         .navbar-brand img {
-            height: 42px;
+            max-height: 70px;
             margin-right: 12px;
+            object-fit: contain;
+            width: auto;
         }
         .nav-link {
             color: var(--black);
+            font-weight: 600;
+            font-size: 1.1rem;
             margin-left: 1rem;
-            font-weight: 500;
+            transition: color 0.3s ease;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: var(--silver);
         }
+        @media (max-width: 991px) {
+            .navbar-nav {
+                flex-direction: column;
+                gap: 0;
+                margin-left: 0;
+            }
+            .navbar-nav .nav-link {
+                padding: 0.5rem 1rem;
+            }
+        }
+
 
         /* Page Header */
         .page-header {
@@ -171,8 +193,10 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="/images/logo.png" alt="АГМА">
-            ТК АГМА
+            <div class="logo-wrap">
+                <img src="/images/logo.png" alt="АГМА" class="logo-main" />
+                <img src="/images/logoEastway.JPG" alt="Eastway" class="logo-eastway" />
+            </div>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarMain">
             <span class="navbar-toggler-icon"></span>
@@ -322,7 +346,7 @@
 </section>
 
 <footer>
-    <div>©2025 ТК АГМА / ИстВэй |
+    <div>©2025 ООО «ТК АГМА» / ИстВэй  |
         <a href="mailto:all@tk-agma.ru">all@tk-agma.ru</a> |
         +7(912)646-27-32, +7(912)030-44-41
     </div>
