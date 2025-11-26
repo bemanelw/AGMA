@@ -57,7 +57,7 @@ public class HomeController {
 
     @GetMapping("/containers")
     public String containers(Model model) {
-        model.addAttribute("pageTitle", "КТК по УрФО | АГМА");
+        model.addAttribute("pageTitle", "Организация приема контейнеров | АГМА");
         return "containers";
     }
 
