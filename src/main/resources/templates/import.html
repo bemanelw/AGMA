@@ -26,21 +26,49 @@
         .navbar {
             background: var(--white);
             box-shadow: 0 3px 20px rgba(0,0,0,0.06);
+            transition: background .3s ease;
+            min-height: 90px;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
         }
         .navbar-brand {
             font-weight: 700;
             font-size: 1.6rem;
             letter-spacing: 1px;
             color: var(--black) !important;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar-brand img {
+            max-height: 70px;
+            margin-right: 12px;
+            object-fit: contain;
+            width: auto;
         }
         .nav-link {
             color: var(--black);
+            font-weight: 600;
+            font-size: 1.1rem;
             margin-left: 1rem;
-            font-weight: 500;
+            transition: color 0.3s ease;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: var(--silver);
         }
+        @media (max-width: 991px) {
+            .navbar-nav {
+                flex-direction: column;
+                gap: 0;
+                margin-left: 0;
+            }
+            .navbar-nav .nav-link {
+                padding: 0.5rem 1rem;
+            }
+        }
+
 
         .hero {
             position: relative;
@@ -133,7 +161,11 @@
 <body>
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="/">ТК АГМА</a>
+        <a class="navbar-brand" href="/">
+            <div class="logo-wrap">
+                <img src="/images/logoEastway.JPG" alt="Eastway" class="logo-eastway" />
+            </div>
+        </a>
         <div class="navbar-nav ms-auto">
             <a class="nav-link" href="/">Главная</a>
             <a class="nav-link" href="/russia">По России</a>
@@ -150,7 +182,6 @@
         <p class="lead">Организация импортных поставок с полным таможенным оформлением</p>
     </div>
 </section>
-
 <section class="content-section">
     <div class="container">
         <h2 class="section-title">Услуги импортной логистики</h2>
@@ -158,14 +189,12 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="service-card">
-                    <div class="service-icon">📑</div>
                     <h4>Таможенное оформление</h4>
                     <p>Полное таможенное сопровождение и оформление документации.</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="service-card">
-                    <div class="service-icon">🌍</div>
                     <h4>Международная доставка</h4>
                     <p>Доставка из Европы, Азии, Америки любым видом транспорта.</p>
                 </div>
@@ -175,14 +204,12 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="service-card">
-                    <div class="service-icon">🏢</div>
                     <h4>Консолидация грузов</h4>
                     <p>Сборные грузы со складов консолидации в странах отправления.</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="service-card">
-                    <div class="service-icon">🛡️</div>
                     <h4>Страхование</h4>
                     <p>Страхование международных перевозок на всех этапах.</p>
                 </div>
@@ -192,24 +219,25 @@
         <h3 class="mt-5 mb-4">Основные направления импорта</h3>
         <div class="countries-grid">
             <div class="country-item">
-                <h5>🇪🇺 Европа</h5>
+                <h5>Европа</h5>
                 <p>Германия, Франция, Италия, Польша</p>
             </div>
             <div class="country-item">
-                <h5>🌏 Азия</h5>
+                <h5>Азия</h5>
                 <p>Китай, Корея, Япония, Вьетнам</p>
             </div>
             <div class="country-item">
-                <h5>🇺🇸 Америка</h5>
+                <h5>Америка</h5>
                 <p>США, Канада, Бразилия</p>
             </div>
             <div class="country-item">
-                <h5>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Великобритания</h5>
+                <h5>Великобритания</h5>
                 <p>Прямые поставки из UK</p>
             </div>
         </div>
     </div>
 </section>
+
 
 <footer>
     <div class="container">

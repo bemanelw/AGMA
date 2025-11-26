@@ -26,20 +26,47 @@
         .navbar {
             background: var(--white);
             box-shadow: 0 3px 20px rgba(0,0,0,0.06);
+            transition: background .3s ease;
+            min-height: 90px;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
         }
         .navbar-brand {
             font-weight: 700;
             font-size: 1.6rem;
             letter-spacing: 1px;
             color: var(--black) !important;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar-brand img {
+            max-height: 70px;
+            margin-right: 12px;
+            object-fit: contain;
+            width: auto;
         }
         .nav-link {
             color: var(--black);
+            font-weight: 600;
+            font-size: 1.1rem;
             margin-left: 1rem;
-            font-weight: 500;
+            transition: color 0.3s ease;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: var(--silver);
+        }
+        @media (max-width: 991px) {
+            .navbar-nav {
+                flex-direction: column;
+                gap: 0;
+                margin-left: 0;
+            }
+            .navbar-nav .nav-link {
+                padding: 0.5rem 1rem;
+            }
         }
 
         .hero {
@@ -146,7 +173,11 @@
 <body>
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="/">ТК АГМА</a>
+        <a class="navbar-brand" href="/">
+            <div class="logo-wrap">
+                <img src="/images/logoEastway.JPG" alt="Eastway" class="logo-eastway" />
+            </div>
+        </a>
         <div class="navbar-nav ms-auto">
             <a class="nav-link" href="/">Главная</a>
             <a class="nav-link" href="/russia">По России</a>
@@ -171,14 +202,12 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="service-card">
-                    <div class="service-icon">📊</div>
                     <h4>Экспорт в ЕАЭС</h4>
                     <p>Поставки в страны Таможенного союза с упрощённым оформлением.</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="service-card">
-                    <div class="service-icon">🇪🇺</div>
                     <h4>Европейский союз</h4>
                     <p>Доставка в страны ЕС с полным таможенным сопровождением.</p>
                 </div>
@@ -188,19 +217,20 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="service-card">
-                    <div class="service-icon">🌏</div>
                     <h4>Азиатские рынки</h4>
                     <p>Экспорт в Китай, Корею, Японию и страны Юго-Восточной Азии.</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="service-card">
-                    <img src="/images/container.png" alt="Полные контейнерные перевозки" class="service-icon">
                     <h4>Подготовка грузов</h4>
                     <p>Упаковка, маркировка и подготовка экспортной документации.</p>
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
 
         <h3 class="mt-5 mb-4">Основные экспортные направления</h3>
         <div class="regions-grid">

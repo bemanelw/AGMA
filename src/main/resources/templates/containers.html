@@ -26,20 +26,47 @@
         .navbar {
             background: var(--white);
             box-shadow: 0 3px 20px rgba(0,0,0,0.06);
+            transition: background .3s ease;
+            min-height: 90px;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
         }
         .navbar-brand {
             font-weight: 700;
             font-size: 1.6rem;
             letter-spacing: 1px;
             color: var(--black) !important;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar-brand img {
+            max-height: 70px;
+            margin-right: 12px;
+            object-fit: contain;
+            width: auto;
         }
         .nav-link {
             color: var(--black);
+            font-weight: 600;
+            font-size: 1.1rem;
             margin-left: 1rem;
-            font-weight: 500;
+            transition: color 0.3s ease;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: var(--silver);
+        }
+        @media (max-width: 991px) {
+            .navbar-nav {
+                flex-direction: column;
+                gap: 0;
+                margin-left: 0;
+            }
+            .navbar-nav .nav-link {
+                padding: 0.5rem 1rem;
+            }
         }
 
         .hero {
@@ -151,7 +178,12 @@
 <body>
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="/">ТК АГМА</a>
+        <a class="navbar-brand" href="/">
+            <div class="logo-wrap">
+                <img src="/images/logo.png" alt="АГМА" class="logo-main" />
+                <img src="/images/logoEastway.JPG" alt="Eastway" class="logo-eastway" />
+            </div>
+        </a>
         <div class="navbar-nav ms-auto">
             <a class="nav-link" href="/">Главная</a>
             <a class="nav-link" href="/russia">По России</a>
@@ -162,7 +194,6 @@
     </div>
 </nav>
 
-<!-- ИЗМЕНЕНИЕ: заменил .service-hero на .hero -->
 <section class="hero">
     <div class="hero-content">
         <h1 class="hero-title">Прием контейнеров по УрФО</h1>
@@ -170,7 +201,6 @@
     </div>
 </section>
 
-<!-- ИЗМЕНЕНИЕ: заменил .service-content на .content-section -->
 <section class="content-section">
     <div class="container">
         <h2 class="section-title">Наши услуги</h2>
@@ -178,23 +208,18 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="service-card">
-                    <div class="service-icon">🚆</div>
                     <h4>Прием контейнеров с поезда</h4>
                     <p>Организованный прием и выгрузка контейнеров с железнодорожного транспорта</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="service-card">
-                    <div class="service-icon">🏭</div>
                     <h4>Перевалка грузов</h4>
                     <p>Эффективная перевалка грузов между различными видами транспорта на терминале</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <img src="/images/container.png" alt="Хранение контейнеров" style="width: 48px; height: 48px;">
-                    </div>
                     <h4>Хранение контейнеров</h4>
                     <p>Безопасное хранение контейнеров на оборудованных площадках терминала</p>
                 </div>
@@ -211,6 +236,7 @@
         </div>
     </div>
 </section>
+
 
 <footer>
     <div class="container">
